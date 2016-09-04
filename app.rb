@@ -1,8 +1,6 @@
 require 'sinatra'
 require 'base64'
 
-Tilt.register Tilt::ERBTemplate, 'svg'
-
 get '/:file' do
   headers 'Content-Type' => 'image/svg+xml'
 
