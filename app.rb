@@ -11,5 +11,6 @@ get '/:file' do
   encoded_css = Base64.encode64(css)
   style = %(<?xml-stylesheet type="text/css" href="data:text/css;charset=utf-8;base64,#{encoded_css}" ?>)
 
-  File.read("images/#{params['file']}") + style
+  f = File.read("images/#{params['file']}").lines
+  f[0] + style + f[1..-1].join
 end
