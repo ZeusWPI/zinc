@@ -1,15 +1,18 @@
+# frozen_string_literal: true
+
 require 'sinatra'
-require 'base64'
 
-get '/:color' do
+get '/:color?' do
   headers 'Content-Type' => 'image/svg+xml'
-  c = 'black'
-  c = params['color'] if params['color'] and !params['color'].match(/\A[a-zA-Z0-9]*\z/).nil?
-  File.read("images/zeuslogo.svg").gsub('$COLOR', c)
-end
-
-get '/?' do
-  headers 'Content-Type' => 'image/svg+xml'
-  File.read("images/zeuslogo.svg").gsub('$COLOR', 'black')
+  color = if params[:color] == 'zeus'
+            '#ff7f00'
+          elsif /^([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/ =~ params[:color]
+            '#' + params[:color]
+          elsif /^[a-zA-Z]+$/ =~ params[:color]
+            params[:color]
+          else
+            '#000000'
+          end
+  File.read('images/zeuslogo.svg').gsub('$COLOR', color)
 end
 
