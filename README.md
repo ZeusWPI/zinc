@@ -1,15 +1,12 @@
-# zinc: Zeus In Numerous Colours
+# zinc: Zeus In Numerous Colours (CPU's)
 
 A microservice to get the Zeus logo in different colors. For example: https://zinc.zeus.gent/pink
 
-## Deploying
+Supported formats:
 
-```bash
-# Clone in current directory
-git clone https://github.com/ZeusWPI/zinc.git
+- https://zinc.zeus.gent/zeus
+- https://zinc.zeus.gent/blue
+- https://zinc.zeus.gent/f00
+- https://zinc.zeus.gent/ff00ff
 
-bundle install --path vendor/bundle
-vim config.ru
-# For nginx config, see ansible-config
-```
-
+Good luck building it! A prebuilt binary is included for your convenience
