@@ -3,6 +3,7 @@ typedef char uint8_t;
 typedef char bool;
 #define true 1
 #define false 0
+#define NULL 0
 #include "platform.h"
 #include "socket.h"
 
@@ -149,13 +150,15 @@ int main(void)
             continue;
         }
 
-        if (!fork()) { // this is the child process
+        if (!fork()) {
+            // this is the child process
             close(socketfd); // child doesn't need the listener
             respond(acceptfd);
             close(acceptfd);
             _exit(0);
         }
         close(acceptfd);  // parent doesn't need this
+        waitpid(-1, NULL, WNOHANG);
     }
     _exit(0);
 }
