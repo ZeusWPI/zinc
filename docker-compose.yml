@@ -1,8 +1,0 @@
-version: '3.3'
-
-services:
-   web:
-     build: .
-     ports:
-       - "34952:34952"
-     restart: on-failure:3
