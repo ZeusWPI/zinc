@@ -4,6 +4,6 @@ services:
   vinc:
     build: .
     container_name: vinc
-    restart: on-failure
+    restart: unless-stopped
     ports:
       - 8081:8081
