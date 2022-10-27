@@ -1,0 +1,9 @@
+version: '3.5'
+
+services:
+  vinc:
+    build: .
+    container_name: vinc
+    restart: unless-stopped
+    ports:
+      - 8081:8081
